@@ -3,18 +3,8 @@ FROM tiangolo/uwsgi-nginx-flask:python3.6
 
 RUN pip install --upgrade pip
 
-# Set location of the package repository. For example for 16.04.
-#RUN wget https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/microsoft-mlserver-packages-py-9.3.0/microsoft-mlserver-packages-py-9.3.0.deb -O /tmp/azml-py.deb
-#RUN wget https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/microsoft-mlserver-packages-py-9.3.0/microsoft-mlserver-packages-py-9.3.0.deb
-#RUN ls /tmp
-#RUN ls -la /etc/apt/sources.list.d/
-
-
 RUN apt-get update
 RUN apt-get install -y apt-utils
-#RUN apt-get install apt-transport-https
-#RUN apt-get install microsoft-mlserver-packages-py-9.3.0
-#RUN dpkg -I /tmp/azml-py.deb
 
 #disto info
 RUN cat /etc/issue
@@ -68,24 +58,26 @@ RUN cat /etc/issue
 ##end modified ML install
 
 #add needed packages for front-end app
-#RUN pip install dash-core-components
-#RUN pip install dash-html-components
-#RUN pip install dash_dangerously_set_inner_html
-#RUN pip install pandas
-#RUN pip install requests
+RUN pip install dash-core-components
+RUN pip install dash-html-components
+RUN pip install dash_dangerously_set_inner_html
+RUN pip install pandas
+RUN pip install requests
 
-
+# Client tools configuration from: https://docs.microsoft.com/en-us/machine-learning-server/install/python-libraries-interpreter
 # Verification step: look for the mlserver.list configuration file
-#ls -la /etc/apt/sources.list.d/
+#RUN ls -la /etc/apt/sources.list.d/
 
 # Update packages on your system
-#apt-get update
+#RUN apt-get update
 
 # If your system does not have the https apt transport option
-#apt-get install apt-transport-https
+#RUN apt-get install apt-transport-https
 
 # Install the packages
-#apt-get install microsoft-mlserver-packages-py-9.3.0
+#RUN apt-get install microsoft-mlserver-packages-py-9.3.0
+#RUN dpkg -I /tmp/azml-py.deb
+# end client tools configuration
 
 ENV LISTEN_PORT=80
 
