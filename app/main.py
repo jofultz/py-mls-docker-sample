@@ -14,21 +14,13 @@ import json
 import urllib
 import uuid
 
-#import api_ml_calls as ml_api
 import sys
 import os
 
-#import appstrings as strs
-#import styles as styles
-#import html_elements as elements
-#import images as images
-#end guidedres.py imports
-
-#begin api_ml_calls.py imports
 import time
-#from azureml.deploy import DeployClient
-#from azureml.deploy.server import MLServer
-#from azureml.common.configuration import Configuration
+from azureml.deploy import DeployClient
+from azureml.deploy.server import MLServer
+from azureml.common.configuration import Configuration
 import pandas as pd
 import sys
 import re
