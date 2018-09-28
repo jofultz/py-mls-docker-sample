@@ -26,12 +26,14 @@ RUN cp -r /opt/microsoft/mlserver/9.3.0/runtime/python/lib/python3.5/site-packag
 RUN cp -r /opt/microsoft/mlserver/9.3.0/runtime/python/lib/python3.5/site-packages/liac* /usr/local/lib/python3.6/site-packages
 RUN cp -r /opt/microsoft/mlserver/9.3.0/runtime/python/lib/python3.5/site-packages/azureml* /usr/local/lib/python3.6/site-packages
 
+
 # add needed packages for front-end app
-RUN pip install dash-core-components dash-html-components dash_dangerously_set_inner_html pandas requests
+RUN pip install dash dash-core-components dash-html-components dash_dangerously_set_inner_html pandas requests
 
 ENV LISTEN_PORT=80
 
 EXPOSE 80
 
 COPY /app /app
+
 
